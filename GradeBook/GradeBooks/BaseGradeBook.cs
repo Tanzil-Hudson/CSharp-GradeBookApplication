@@ -11,7 +11,7 @@ namespace GradeBook.GradeBooks
 {
     public class BaseGradeBook
     {
-        public GradeBookType { get; set; }
+        
         public string Name { get; set; }
         public List<Student> Students { get; set; }
 
@@ -19,7 +19,7 @@ namespace GradeBook.GradeBooks
         {
             Name = name;
             Students = new List<Student>();
-            Type = new GradeBookType();
+            GradeBookType Type = new GradeBookType();
         }
 
         public void AddStudent(Student student)
