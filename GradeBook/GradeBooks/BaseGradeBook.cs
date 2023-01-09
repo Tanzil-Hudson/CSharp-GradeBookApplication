@@ -77,8 +77,23 @@ namespace GradeBook.GradeBooks
             }
         }
 
-        public abstract BaseGradeBook load(string name);
+        public BaseGradeBook load(string name)
+        {
+            if (!File.Exists(name + ".gdbk"))
+            {
+                Console.WriteLine("Gradebook could not be found.");
+                return null;
+            }
 
+            using (var file = new FileStream(name + ".gdbk", FileMode.Open, FileAccess.Read))
+            {
+                using (var reader = new StreamReader(file))
+                {
+                    var json = reader.ReadToEnd();
+                    return ConvertToGradeBook(json);
+                }
+            }
+        }
 
         public void Save()
         {
