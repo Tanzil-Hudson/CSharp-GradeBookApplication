@@ -22,7 +22,7 @@ namespace GradeBook.UserInterfaces
             if (command.StartsWith("create"))
                 CreateCommand(command);
             else if (command.StartsWith("load"))
-                LoadCommand(command, baseGradeBook: BaseGradeBook);
+                LoadCommand(command, null);
             else if (command == "help")
                 HelpCommand();
             else if (command == "quit")
