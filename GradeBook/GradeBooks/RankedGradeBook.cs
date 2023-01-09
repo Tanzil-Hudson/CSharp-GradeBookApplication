@@ -1,8 +1,6 @@
 ﻿using GradeBook.Enums;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace GradeBook.GradeBooks
 {
@@ -17,10 +15,8 @@ namespace GradeBook.GradeBooks
         {
             if (Students.Count < 5)
                 throw new InvalidOperationException("Ranked Grading Requires at least 5 students with grades in order to properly calculate a student's overall grade.");
-            else(Students.Count >= 5)
-                    return = base.CalculateStatistics();
 
-
+            base.CalculateStatistics();
         }
 
         public override void CalculateStudentStatistics()
