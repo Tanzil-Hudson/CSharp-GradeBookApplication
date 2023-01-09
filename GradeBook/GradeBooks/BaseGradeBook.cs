@@ -274,13 +274,5 @@ namespace GradeBook.GradeBooks
         {
             throw new NotImplementedException();
         }
-
-        public override void CalculateStudentStatistics()
-        {
-            if (Students.Count < 5)
-                throw new InvalidOperationException("Ranked Grading Requires at least 5 students with grades in order to properly calculate a student's overall grade.");
-
-            base.CalculateStudentStatistics();
-        }
     }
 }
