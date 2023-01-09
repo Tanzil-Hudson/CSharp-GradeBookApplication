@@ -22,7 +22,7 @@ namespace GradeBook.UserInterfaces
             if (command.StartsWith("create"))
                 CreateCommand(command);
             else if (command.StartsWith("load"))
-                LoadCommand(command);
+                LoadCommand(command, BaseGradeBook);
             else if (command == "help")
                 HelpCommand();
             else if (command == "quit")
@@ -43,7 +43,7 @@ namespace GradeBook.UserInterfaces
             BaseGradeBook gradeBook = new BaseGradeBook(name);
             var type = parts[2];
 
-            BaseGradeBook gradeBook= new BaseGradeBook(name);
+            BaseGradeBook gradeBook1= new BaseGradeBook(name);
             if (type == "standard")
                 gradeBook = new StandardGradeBook(name);
             else if (type == "ranked")
@@ -58,7 +58,7 @@ namespace GradeBook.UserInterfaces
             GradeBookUserInterface.CommandLoop(gradeBook);
         }
 
-        public static void LoadCommand(string command)
+        public static void LoadCommand(string command, BaseGradeBook baseGradeBook)
         {
             var parts = command.Split(' ');
             if (parts.Length != 2)
@@ -67,7 +67,7 @@ namespace GradeBook.UserInterfaces
                 return;
             }
             var name = parts[1];
-            var gradeBook = BaseGradeBook.Load(name);
+            var gradeBook = baseGradeBook.Load(name);
 
             if (gradeBook == null)
                 return;

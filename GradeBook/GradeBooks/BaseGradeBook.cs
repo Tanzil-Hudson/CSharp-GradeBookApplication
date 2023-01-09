@@ -9,7 +9,7 @@ using Newtonsoft.Json.Linq;
 
 namespace GradeBook.GradeBooks
 {
-    public class BaseGradeBook
+    public abstract class BaseGradeBook
     {
         
         public string Name { get; set; }
@@ -77,7 +77,7 @@ namespace GradeBook.GradeBooks
             }
         }
 
-        public BaseGradeBook load(string name)
+        public BaseGradeBook Load(string name)
         {
             if (!File.Exists(name + ".gdbk"))
             {
