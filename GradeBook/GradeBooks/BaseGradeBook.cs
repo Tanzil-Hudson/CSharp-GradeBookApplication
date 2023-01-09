@@ -1,20 +1,21 @@
-﻿using System;
-using System.Linq;
-
-using GradeBook.Enums;
-using System.Collections.Generic;
-using System.IO;
+﻿using GradeBook.Enums;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 
 namespace GradeBook.GradeBooks
 {
     public abstract class BaseGradeBook
     {
-        
+
         public string Name { get; set; }
         public List<Student> Students { get; set; }
         public GradeBookType Type { get; set; }
+
+        public bool IsWeighted { get; set; }
 
         public BaseGradeBook(string name)
         {
@@ -266,7 +267,7 @@ namespace GradeBook.GradeBooks
                              from type in assembly.GetTypes()
                              where type.FullName == "GradeBook.GradeBooks.StandardGradeBook"
                              select type).FirstOrDefault();
-            
+
             return JsonConvert.DeserializeObject(json, gradebook);
         }
 
