@@ -31,7 +31,7 @@ namespace GradeBook.UserInterfaces
                 Console.WriteLine("{0} was not recognized, please try again.", command);
         }
 
-        public static void CreateCommand(string command, bool isWeighted)
+        public static void CreateCommand(string command,)
         {
             var parts = command.Split(' ');
             if (parts.Length != 3)
@@ -40,14 +40,16 @@ namespace GradeBook.UserInterfaces
                 return;
             }
             var name = parts[1];
-            BaseGradeBook gradeBook;
             var type = parts[2];
+            var weighted = false;
+            if (parts[3] == "true")
+                weighted = true;
 
-            
+            BaseGradeBook gradeBook;
             if (type == "standard")
-                gradeBook = new StandardGradeBook(name);
+                gradeBook = new StandardGradeBook(name, weighted);
             else if (type == "ranked")
-                gradeBook = new RankedGradeBook(name);
+                gradeBook = new RankedGradeBook(name, weighted);
             else
             {
                 Console.WriteLine("{0} is not a supported type of gradebook, please try again", type);
