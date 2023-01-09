@@ -16,7 +16,7 @@ namespace GradeBook.GradeBooks
         public List<Student> Students { get; set; }
         public GradeBookType Type { get; set; }
 
-        private abstract BaseGradeBook(string name)
+        public BaseGradeBook(string name)
         {
             Name = name;
             Students = new List<Student>();
@@ -77,23 +77,8 @@ namespace GradeBook.GradeBooks
             }
         }
 
-        public static BaseGradeBook Load(string name)
-        {
-            if (!File.Exists(name + ".gdbk"))
-            {
-                Console.WriteLine("Gradebook could not be found.");
-                return null;
-            }
+        public abstract BaseGradeBook load(string name);
 
-            using (var file = new FileStream(name + ".gdbk", FileMode.Open, FileAccess.Read))
-            {
-                using (var reader = new StreamReader(file))
-                {
-                    var json = reader.ReadToEnd();
-                    return ConvertToGradeBook(json);
-                }
-            }
-        }
 
         public void Save()
         {
