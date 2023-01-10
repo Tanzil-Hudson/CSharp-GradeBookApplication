@@ -31,7 +31,7 @@ namespace GradeBook.UserInterfaces
                 Console.WriteLine("{0} was not recognized, please try again.", command);
         }
 
-        public static void CreateCommand(string command,)
+        public static void CreateCommand(string command)
         {
             var parts = command.Split(' ');
             if (parts.Length != 3)
